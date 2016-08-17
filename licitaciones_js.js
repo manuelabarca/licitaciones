@@ -30,7 +30,7 @@ app.controller('licitaciones_all', function($scope, $http){
         default: "Este mes no necesita formateo, o no es un mes valido.";
             break;
     }
-    $http.get("http://api.mercadopublico.cl/servicios/v1/publico/licitaciones.json?fecha="+$scope.fechaActual.getDate()+NMes+$scope.fechaActual.getFullYear()+"&ticket=EB9BA9FD-B1DA-4C27-B78D-7A095969577B").then(function (res) {
+    $http.get("http://api.mercadopublico.cl/servicios/v1/publico/licitaciones.json?fecha="+$scope.fechaActual.getDate()+NMes+$scope.fechaActual.getFullYear()+"&ticket=*AQUI TU TICKET*").then(function (res) {
         $scope.licitacion = res.data;
         console.log(res.data);
 
