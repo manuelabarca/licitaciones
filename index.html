@@ -7,19 +7,33 @@
     <script src="js_merca.js" type="text/javascript"></script>
 
 </head>
-<body>
-<div ng-app="licitacionesMercado" ng-controller="licitaciones_all">
+<body ng-app="licitacionesMercado">
+<div  ng-controller="licitaciones_all">
 Fecha de hoy: <span id ="fecha">{{fechaActual | date:'dd-MM-yyyy'}}</span>
 
    <p>Codigos de licitacion</p>
     <p>{{porcentaje}}%</p>
     <span>Total Licitaciones: {{totalL}}</span>
     <p><span>Total LP: </span></p>
-    <ul>
-        <li ng-repeat = "li in licitacion" ng-bind-html-unsafe="li.CodigoExterno">
-            {{li.CodigoExterno}}
-        </li>
-    </ul>
+
+Buscar por palabra clave
+    <input type="text" placeholder="Inserta palabra clave" width="250px" ng-model="search" />
+    <table border="1">
+        <thead>
+        <tr>
+            <th colspan="2">Codigo Licitacion</th>
+            <th>Nombre Licitacion</th>
+            <th>Estado Licitacion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="li in licitacion | filter: search">
+            <td colspan="2">{{li.CodigoExterno}}</td>
+            <td>{{li.Nombre}}</td>
+            <td>{{li.CodigoEstado}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
